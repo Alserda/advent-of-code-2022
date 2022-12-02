@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	_ "embed"
@@ -12,13 +12,13 @@ import (
 var input_test string
 
 func ExampleDay01() {
-	fmt.Println(day01(input_test))
+	fmt.Println(part1(input_test))
 
 	// output: elf 4 carries the most calories: 24000
 }
 
 func ExampleDay02() {
-	fmt.Println(day02(input_test))
+	fmt.Println(part2(input_test))
 
 	// output: the top 3 elfs carry 45000 calories in total
 }

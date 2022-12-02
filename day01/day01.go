@@ -1,4 +1,4 @@
-package main
+package day01
 
 import (
 	_ "embed"
@@ -6,7 +6,8 @@ import (
 	"log"
 	"sort"
 	"strconv"
-	"strings"
+
+	"github.com/Alserda/advent-of-code-2022/utils"
 )
 
 //go:embed input.txt
@@ -15,12 +16,12 @@ var input_day string
 // Inventory is a mapping of elf's carrying a total calories.
 type Inventory map[int]int
 
-func main() {
-	fmt.Println(day01(input_day))
-	fmt.Println(day02(input_day))
+func Run() {
+	fmt.Println(part1(input_day))
+	fmt.Println(part2(input_day))
 }
 
-func day01(input string) string {
+func part1(input string) string {
 	inv := makeInventory(input)
 	elf, calories, err := inv.highest()
 
@@ -31,7 +32,7 @@ func day01(input string) string {
 	return fmt.Sprintf("elf %d carries the most calories: %d", elf, calories)
 }
 
-func day02(input string) string {
+func part2(input string) string {
 	inv := makeInventory(input)
 
 	elfs := 3
@@ -48,7 +49,7 @@ func makeInventory(input string) Inventory {
 	total := make(Inventory)
 
 	elf := 1
-	for _, v := range strings.Split(strings.TrimSuffix(input, "\n"), "\n") {
+	for _, v := range utils.SplitRows(input) {
 		if v == "" {
 			elf++
 			continue
