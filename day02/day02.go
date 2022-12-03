@@ -15,9 +15,9 @@ var input_day string
 type shapeID int
 
 const (
-	rock    shapeID = 0
-	paper   shapeID = 1
-	scissor shapeID = 2
+	Rock    shapeID = 0
+	Paper   shapeID = 1
+	Scissor shapeID = 2
 )
 
 // The scores of a round
@@ -34,17 +34,17 @@ type Shape struct {
 	loses shapeID
 }
 
-var shapes = map[shapeID]Shape{
-	rock:    {rock, scissor, paper},
-	paper:   {paper, rock, scissor},
-	scissor: {scissor, paper, rock},
+var Shapes = map[shapeID]Shape{
+	Rock:    {Rock, Scissor, Paper},
+	Paper:   {Paper, Rock, Scissor},
+	Scissor: {Scissor, Paper, Rock},
 }
 
 // scores is a mapping of points that are given for playing a type of shape.
 var scores = map[shapeID]int{
-	rock:    1,
-	paper:   2,
-	scissor: 3,
+	Rock:    1,
+	Paper:   2,
+	Scissor: 3,
 }
 
 // Round is the strategy that is played for one game.
@@ -110,11 +110,11 @@ type OpponentColumn string
 func (c OpponentColumn) shape() Shape {
 	switch c {
 	case "A":
-		return shapes[rock]
+		return Shapes[Rock]
 	case "B":
-		return shapes[paper]
+		return Shapes[Paper]
 	default:
-		return shapes[scissor]
+		return Shapes[Scissor]
 	}
 }
 
@@ -124,11 +124,11 @@ type OurColumn string
 func (c OurColumn) shape() Shape {
 	switch c {
 	case "X":
-		return shapes[rock]
+		return Shapes[Rock]
 	case "Y":
-		return shapes[paper]
+		return Shapes[Paper]
 	default:
-		return shapes[scissor]
+		return Shapes[Scissor]
 	}
 }
 
@@ -139,11 +139,11 @@ func (c OurColumn) shape() Shape {
 func (c OurColumn) elfStrategy(opponent Shape) Shape {
 	switch c {
 	case "X":
-		return shapes[opponent.wins]
+		return Shapes[opponent.wins]
 	case "Y":
-		return shapes[opponent.ID]
+		return Shapes[opponent.ID]
 	default:
-		return shapes[opponent.loses]
+		return Shapes[opponent.loses]
 	}
 }
 
