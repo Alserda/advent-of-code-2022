@@ -5,6 +5,7 @@ import (
 
 	"github.com/Alserda/advent-of-code-2022/day01"
 	"github.com/Alserda/advent-of-code-2022/day02"
+	"github.com/Alserda/advent-of-code-2022/day03"
 )
 
 func main() {
@@ -13,4 +14,7 @@ func main() {
 
 	fmt.Println("-- day 2 --")
 	day02.Run()
+
+	fmt.Println("-- day 3 --")
+	day03.Run()
 }
